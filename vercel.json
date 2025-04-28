@@ -1,6 +1,18 @@
 {
-    "builds": [
-      { "src": "Dockerfile", "use": "@vercel/docker" }
-    ]
-  }
-  
+  "version": 2,
+  "builds": [
+    {
+      "src": "main.go",
+      "use": "@vercel/go",
+      "config": {
+        "binaryName": "app"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/app"
+    }
+  ]
+}
